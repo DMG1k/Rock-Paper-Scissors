@@ -4,8 +4,6 @@ function getComputerChoice() {
     return choices[randomIndex];
 }
 
-
-
 function playRound (playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
 
@@ -28,12 +26,27 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-let playerScore = 0;
-let compScore = 0;
+let playerWins = 0;
+let computerWins = 0;
 
 for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt
+    let playerSelection = prompt("Choose between Rock, Paper or Scissors");
     let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
+    alert(result);
+    if (result.startsWith("You win")) {
+        playerWins++;
+    } else if (result.startsWith("You lose")) {
+        computerWins++;
+    }
+}
+
+if (playerWins > computerWins) {
+    alert("You are the winner! Congratulations");
+} else if (computerWins > playerWins) {
+    alert("Computer wins. Better luck next time.");
+} else {
+    alert("It's a tie!");
 }
 
 
